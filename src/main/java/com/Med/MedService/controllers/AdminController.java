@@ -1,9 +1,10 @@
-package com.Obrabotka.IT.controllers;
+package com.Med.MedService.controllers;
 
-import com.Obrabotka.IT.models.Role;
-import com.Obrabotka.IT.models.User;
-import com.Obrabotka.IT.repository.RoleRepository;
-import com.Obrabotka.IT.service.UserService;
+import com.Med.MedService.service.UserService;
+import com.Med.MedService.models.Role;
+import com.Med.MedService.models.User;
+import com.Med.MedService.repository.RoleRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;

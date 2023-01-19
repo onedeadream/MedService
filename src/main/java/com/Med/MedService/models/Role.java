@@ -1,4 +1,4 @@
-package com.Obrabotka.IT.models;
+package com.Med.MedService.models;
 
 import org.springframework.security.core.GrantedAuthority;
 

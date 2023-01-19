@@ -1,6 +1,6 @@
-package com.Obrabotka.IT.repository;
+package com.Med.MedService.repository;
 
-import com.Obrabotka.IT.models.User;
+import com.Med.MedService.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

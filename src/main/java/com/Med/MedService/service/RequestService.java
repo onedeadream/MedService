@@ -1,8 +1,8 @@
-package com.Obrabotka.IT.service;
+package com.Med.MedService.service;
 
-import com.Obrabotka.IT.models.Operation;
-import com.Obrabotka.IT.models.Requests;
-import com.Obrabotka.IT.repository.RequestRepository;
+import com.Med.MedService.models.Operation;
+import com.Med.MedService.models.Requests;
+import com.Med.MedService.repository.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

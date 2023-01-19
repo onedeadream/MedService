@@ -1,7 +1,7 @@
-package com.Obrabotka.IT.controllers;
+package com.Med.MedService.controllers;
 
-import com.Obrabotka.IT.models.User;
-import com.Obrabotka.IT.service.UserService;
+import com.Med.MedService.models.User;
+import com.Med.MedService.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

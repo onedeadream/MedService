@@ -1,9 +1,9 @@
-package com.Obrabotka.IT.service;
+package com.Med.MedService.service;
 
-import com.Obrabotka.IT.models.Operation;
-import com.Obrabotka.IT.models.Role;
-import com.Obrabotka.IT.models.User;
-import com.Obrabotka.IT.repository.OperationRepository;
+import com.Med.MedService.models.Operation;
+import com.Med.MedService.models.Role;
+import com.Med.MedService.models.User;
+import com.Med.MedService.repository.OperationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

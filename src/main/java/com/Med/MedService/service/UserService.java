@@ -1,9 +1,9 @@
-package com.Obrabotka.IT.service;
+package com.Med.MedService.service;
 
-import com.Obrabotka.IT.models.Role;
-import com.Obrabotka.IT.models.User;
-import com.Obrabotka.IT.repository.RoleRepository;
-import com.Obrabotka.IT.repository.UserRepository;
+import com.Med.MedService.models.Role;
+import com.Med.MedService.models.User;
+import com.Med.MedService.repository.RoleRepository;
+import com.Med.MedService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
