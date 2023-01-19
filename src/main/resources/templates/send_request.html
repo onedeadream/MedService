@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Requests</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="header">
+    <div id="navigation-container">
+        <img class="logo" src="/pictures/logo.svg">
+        <ul class="hr">
+            <li><a href="/">Home</a></li>
+            <li sec:authorize="hasRole('ROLE_DOCTOR')"><a href="/claim_request">Claim Request</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/claim_request">Claim Request</a></li>
+            <li sec:authorize="hasRole('ROLE_USER')"><a href="/send_request">Send Request</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/send_request">Send Request</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin">AdminPanel</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="main">
+
+    <script src="/js/send.js"></script>
+    <h2>Select a date</h2>
+    <table class="data">
+        <tr>
+            <td><a href="/send_request/1.01">1</a></td>
+            <td><a href="/send_request/2.01">2</a></td>
+            <td><a href="/send_request/3.01">3</a></td>
+            <td><a href="/send_request/4.01">4</a></td>
+            <td><a href="/send_request/5.01">5</a></td>
+            <td><a href="/send_request/6.01">6</a></td>
+            <td><a href="/send_request/7.01">7</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="/send_request/8.01">8</a></td>
+            <td><a href="/send_request/9.01">9</a></td>
+            <td><a href="/send_request/10.01">10</a></td>
+            <td><a href="/send_request/11.01">11</a></td>
+            <td><a href="/send_request/12.01">12</a></td>
+            <td><a href="/send_request/13.01">13</a></td>
+            <td><a href="/send_request/14.01">14</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="/send_request/15.01">15</a></td>
+            <td><a href="/send_request/16.01">16</a></td>
+            <td><a href="/send_request/17.01">17</a></td>
+            <td><a href="/send_request/18.01">18</a></td>
+            <td><a href="/send_request/19.01">19</a></td>
+            <td><a href="/send_request/20.01">20</a></td>
+            <td><a href="/send_request/21.01">21</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="/send_request/22.01">22</a></td>
+            <td><a href="/send_request/23.01">23</a></td>
+            <td><a href="/send_request/24.01">24</a></td>
+            <td><a href="/send_request/25.01">25</a></td>
+            <td><a href="/send_request/26.01">26</a></td>
+            <td><a href="/send_request/27.01">27</a></td>
+            <td><a href="/send_request/28.01">28</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="/send_request/29.01">29</a></td>
+            <td><a href="/send_request/30.01">30</a></td>
+            <td><a href="/send_request/31.01">31</a></td>
+        </tr>
+    </table>
+
+    <h2>All entries</h2>
+
+    <div class="operationsTable">
+
+        <table  class="operationsTable1" style="float:left; border: 2px solid #0c3261; margin: 5px;">
+        <thead>
+        <th>Data</th>
+        <th>Time</th>
+        <th>Employment</th>
+        <th>Operation</th>
+        <th>Accept</th>
+        <th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
+        </thead>
+
+
+        <div th:each ="op : ${allOperation}" >
+            <tr th:if="${op.operations eq 1}">
+                <td th:text="${op.data}"></td>
+                <td th:text="${op.time}"></td>
+                <td th:text="${op.employment}"></td>
+                <td th:text="${op.operations}"></td>
+                <td th:if="${op.employment == 'Free'}">
+                    <form action="/send_request" method="post">
+                        <input type="hidden" name="operationId" th:value="${op.id}"/>
+                        <input type="hidden" name="action" th:value="request"/>
+                        <button type="submit" class="btn btn-danger del" onclick="openForm()">+</button>
+                    </form>
+                    <script src="/js/send.js"></script>
+                </td>
+
+                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                    <form action="/send_request" method="post">
+                        <input type="hidden" name="operationId" th:value="${op.id}"/>
+                        <input type="hidden" name="action" th:value="delete"/>
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </div>
+
+        <div th:each ="op : ${getData}">
+            <tr th:if="${op.operations == 1}">
+                <td th:text="${op.data}"></td>
+                <td th:text="${op.time}"></td>
+                <td th:text="${op.employment}"></td>
+                <td th:text="${op.operations}"></td>
+                <td th:if="${op.employment == 'Free'}">
+                    <form action="/send_request" method="post">
+                        <input type="hidden" name="operationId" th:value="${op.id}"/>
+                        <input type="hidden" name="action" th:value="request"/>
+                        <button type="submit" class="btn btn-danger del" onclick="openForm()">+</button>
+                    </form>
+                    <script src="/js/send.js"></script>
+                </td>
+
+                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                    <form action="/send_request" method="post">
+                        <input type="hidden" name="operationId" th:value="${op.id}"/>
+                        <input type="hidden" name="action" th:value="delete"/>
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </div>
+
+    </table>
+
+        <table  class="operationsTable1" style="float:left; border: 2px solid #0c3261; margin: 5px;" >
+        <thead>
+        <th>Data</th>
+        <th>Time</th>
+        <th>Employment</th>
+        <th>Operation</th>
+        <th>Accept</th>
+        <th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
+        </thead>
+
+        <div th:each ="op : ${allOperation}">
+            <tr th:if="${op.operations == 2}">
+                <td th:text="${op.data}"></td>
+                <td th:text="${op.time}"></td>
+                <td th:text="${op.employment}"></td>
+                <td th:text="${op.operations}"></td>
+                <td th:if="${op.employment == 'Free'}">
+                    <form action="/send_request" method="post">
+                        <input type="hidden" name="operationId" th:value="${op.id}"/>
+                        <input type="hidden" name="action" th:value="request"/>
+                        <button type="submit" class="btn btn-danger del" onclick="openForm()">+</button>
+                    </form>
+                    <script src="/js/send.js"></script>
+                </td>
+
+                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                    <form action="/send_request" method="post">
+                        <input type="hidden" name="operationId" th:value="${op.id}"/>
+                        <input type="hidden" name="action" th:value="delete"/>
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </div>
+
+        <div th:each ="op : ${getData}">
+            <tr th:if="${op.operations == 2}">
+                <td th:text="${op.data}"></td>
+                <td th:text="${op.time}"></td>
+                <td th:text="${op.employment}"></td>
+                <td th:text="${op.operations}"></td>
+                <td th:if="${op.employment == 'Free'}">
+                    <form action="/send_request" method="post">
+                        <input type="hidden" name="operationId" th:value="${op.id}"/>
+                        <input type="hidden" name="action" th:value="request"/>
+                        <button type="submit" class="btn btn-danger del" onclick="openForm()">+</button>
+                    </form>
+                    <script src="/js/send.js"></script>
+                </td>
+
+                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                    <form action="/send_request" method="post">
+                        <input type="hidden" name="operationId" th:value="${op.id}"/>
+                        <input type="hidden" name="action" th:value="delete"/>
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </div>
+
+
+    </table>
+
+        <table  class="operationsTable1" style="float:left;border: 2px solid #0c3261; margin: 5px;">
+        <thead>
+        <th>Data</th>
+        <th>Time</th>
+        <th>Employment</th>
+        <th>Operation</th>
+        <th>Accept</th>
+        <th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
+        </thead>
+
+        <div th:each ="op : ${allOperation}">
+            <tr th:if="${op.operations == 3}">
+                <td th:text="${op.data}"></td>
+                <td th:text="${op.time}"></td>
+                <td th:text="${op.employment}"></td>
+                <td th:text="${op.operations}"></td>
+
+                <td th:if="${op.employment == 'Free'}">
+                    <form action="/send_request" method="post">
+                        <input type="hidden" name="operationId" th:value="${op.id}"/>
+                        <input type="hidden" name="action" th:value="request"/>
+                        <button class="accept" type="submit" onclick="openForm()">+</button>
+                    </form>
+                    <script src="/js/send.js"></script>
+                </td>
+
+                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                    <form action="/send_request" method="post">
+                        <input type="hidden" name="operationId" th:value="${op.id}"/>
+                        <input type="hidden" name="action" th:value="delete"/>
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+
+            </tr>
+        </div>
+
+        <div th:each ="op : ${getData}">
+            <tr th:if="${op.operations == 3}">
+                <td th:text="${op.data}"></td>
+                <td th:text="${op.time}"></td>
+                <td th:text="${op.employment}"></td>
+                <td th:text="${op.operations}"></td>
+                <td th:if="${op.employment == 'Free'}">
+                    <form action="/send_request" method="post">
+                        <input type="hidden" name="operationId" th:value="${op.id}"/>
+                        <input type="hidden" name="action" th:value="request"/>
+                        <button type="submit" class="btn btn-danger del" onclick="openForm()">+</button>
+                    </form>
+                    <script src="/js/send.js"></script>
+                </td>
+
+                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                    <form action="/send_request" method="post">
+                        <input type="hidden" name="operationId" th:value="${op.id}"/>
+                        <input type="hidden" name="action" th:value="delete"/>
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </div>
+
+    </table>
+
+        <table  class="operationsTable1" style="float:left;border: 2px solid #0c3261; margin: 5px;">
+            <thead>
+            <th>Data</th>
+            <th>Time</th>
+            <th>Employment</th>
+            <th>Operation</th>
+            <th>Accept</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
+            </thead>
+
+            <div th:each ="op : ${allOperation}">
+                <tr th:if="${op.operations == 4}">
+                    <td th:text="${op.data}"></td>
+                    <td th:text="${op.time}"></td>
+                    <td th:text="${op.employment}"></td>
+                    <td th:text="${op.operations}"></td>
+                    <td th:if="${op.employment == 'Free'}">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="request"/>
+                            <button type="submit" class="btn btn-danger del" onclick="openForm()">+</button>
+                        </form>
+                        <script src="/js/send.js"></script>
+                    </td>
+
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="delete"/>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </div>
+
+            <div th:each ="op : ${getData}">
+                <tr th:if="${op.operations == 4}">
+                    <td th:text="${op.data}"></td>
+                    <td th:text="${op.time}"></td>
+                    <td th:text="${op.employment}"></td>
+                    <td th:text="${op.operations}"></td>
+                    <td th:if="${op.employment == 'Free'}">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="request"/>
+                            <button type="submit" class="btn btn-danger del" onclick="openForm()">+</button>
+                        </form>
+                        <script src="/js/send.js"></script>
+                    </td>
+
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="delete"/>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </div>
+
+        </table>
+
+        <table  class="operationsTable1" style="float:left;border: 2px solid #0c3261; margin: 5px;">
+            <thead>
+            <th>Data</th>
+            <th>Time</th>
+            <th>Employment</th>
+            <th>Operation</th>
+            <th>Accept</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
+            </thead>
+
+            <div th:each ="op : ${allOperation}">
+                <tr th:if="${op.operations == 5}">
+                    <td th:text="${op.data}"></td>
+                    <td th:text="${op.time}"></td>
+                    <td th:text="${op.employment}"></td>
+                    <td th:text="${op.operations}"></td>
+                    <td th:if="${op.employment == 'Free'}">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="request"/>
+                            <button type="submit" class="btn btn-danger del" onclick="openForm()">+</button>
+                        </form>
+                        <script src="/js/send.js"></script>
+                    </td>
+
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="delete"/>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </div>
+
+            <div th:each ="op : ${getData}">
+                <tr th:if="${op.operations == 5}">
+                    <td th:text="${op.data}"></td>
+                    <td th:text="${op.time}"></td>
+                    <td th:text="${op.employment}"></td>
+                    <td th:text="${op.operations}"></td>
+                    <td th:if="${op.employment == 'Free'}">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="request"/>
+                            <button type="submit" class="btn btn-danger del" onclick="openForm()">+</button>
+                        </form>
+                        <script src="/js/send.js"></script>
+                    </td>
+
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="delete"/>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </div>
+
+        </table>
+
+        <table  class="operationsTable1" style="float:left;border: 2px solid #0c3261; margin: 5px;">
+            <thead>
+            <th>Data</th>
+            <th>Time</th>
+            <th>Employment</th>
+            <th>Operation</th>
+            <th>Accept</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
+            </thead>
+
+            <div th:each ="op : ${allOperation}">
+                <tr th:if="${op.operations == 6}">
+                    <td th:text="${op.data}"></td>
+                    <td th:text="${op.time}"></td>
+                    <td th:text="${op.employment}"></td>
+                    <td th:text="${op.operations}"></td>
+                    <td th:if="${op.employment == 'Free'}">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="request"/>
+                            <button type="submit" class="btn btn-danger del" onclick="openForm()">+</button>
+                        </form>
+                        <script src="/js/send.js"></script>
+                    </td>
+
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="delete"/>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </div>
+
+            <div th:each ="op : ${getData}">
+                <tr th:if="${op.operations == 6}">
+                    <td th:text="${op.data}"></td>
+                    <td th:text="${op.time}"></td>
+                    <td th:text="${op.employment}"></td>
+                    <td th:text="${op.operations}"></td>
+                    <td th:if="${op.employment == 'Free'}">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="request"/>
+                            <button type="submit" class="btn btn-danger del" onclick="openForm()">+</button>
+                        </form>
+                        <script src="/js/send.js"></script>
+                    </td>
+
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="delete"/>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </div>
+
+        </table>
+
+        <table  class="operationsTable1" style="border: 2px solid #0c3261; margin: 5px;">
+            <thead>
+            <th>Data</th>
+            <th>Time</th>
+            <th>Employment</th>
+            <th>Operation</th>
+            <th>Accept</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
+            </thead>
+
+            <div th:each ="op : ${allOperation}">
+                <tr th:if="${op.operations == 7}">
+                    <td th:text="${op.data}"></td>
+                    <td th:text="${op.time}"></td>
+                    <td th:text="${op.employment}"></td>
+                    <td th:text="${op.operations}"></td>
+                    <td th:if="${op.employment == 'Free'}">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="request"/>
+                            <button type="submit" class="btn btn-danger del" onclick="openForm()">+</button>
+                        </form>
+                        <script src="/js/send.js"></script>
+                    </td>
+
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="delete"/>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </div>
+
+            <div th:each ="op : ${getData}">
+                <tr th:if="${op.operations == 7}">
+                    <td th:text="${op.data}"></td>
+                    <td th:text="${op.time}"></td>
+                    <td th:text="${op.employment}"></td>
+                    <td th:text="${op.operations}"></td>
+                    <td th:if="${op.employment == 'Free'}">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="request"/>
+                            <button type="submit" class="btn btn-danger del" onclick="openForm()">+</button>
+                        </form>
+                        <script src="/js/send.js"></script>
+                    </td>
+
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                        <form action="/send_request" method="post">
+                            <input type="hidden" name="operationId" th:value="${op.id}"/>
+                            <input type="hidden" name="action" th:value="delete"/>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </div>
+
+        </table>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>Компания © Medical Service. Все права защищены.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<svg width="388" height="76" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG Editor - http://github.com/mzalive/SVG Editor/ -->
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="78" width="390" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <line stroke="#0c3261" stroke-linecap="null" stroke-linejoin="null" id="svg_13" y2="71.567874" x2="10.327862" y1="8.567875" x1="10.327862" fill-opacity="null" stroke-width="4.5" fill="none"/>
+  <line stroke="#0c3261" stroke-linecap="null" stroke-linejoin="null" id="svg_14" y2="71.56788" x2="55.327862" y1="7.567876" x1="55.327862" fill-opacity="null" stroke-width="4.5" fill="none"/>
+  <line stroke-linecap="null" stroke-linejoin="null" id="svg_15" y2="69.158038" x2="55.327862" y1="69.158038" x1="10.327862" fill-opacity="null" stroke-width="4.5" stroke="#0c3261" fill="none"/>
+  <line stroke="#0c3261" stroke-linecap="null" stroke-linejoin="null" id="svg_16" y2="7.567874" x2="56.377044" y1="7.567874" x1="8.688519" fill-opacity="null" stroke-width="4.5" fill="none"/>
+  <line stroke="#0c3261" stroke-linecap="null" stroke-linejoin="null" id="svg_17" y2="28.567874" x2="23.979025" y1="6.858572" x1="23.979025" fill-opacity="null" stroke-width="4.5" fill="none"/>
+  <line stroke="#0c3261" stroke-linecap="null" stroke-linejoin="null" id="svg_18" y2="28.672527" x2="41.78135" y1="7.858572" x1="41.78135" fill-opacity="null" stroke-width="4.5" fill="none"/>
+  <line stroke="#0c3261" stroke-linecap="null" stroke-linejoin="null" id="svg_20" y2="27.530495" x2="21.606933" y1="27.530495" x1="43.990653" fill-opacity="null" stroke-width="4.5" fill="none"/>
+  <line stroke="#0c3261" stroke-linecap="null" stroke-linejoin="null" id="svg_32" y2="52.141151" x2="33.023126" y1="34.869424" x1="32.913115" fill-opacity="null" stroke-width="4.5" fill="none"/>
+  <line stroke="#0c3261" stroke-linecap="null" stroke-linejoin="null" id="svg_34" y2="43.230259" x2="41.934017" y1="43.230261" x1="24.552279" fill-opacity="null" stroke-width="4.5" fill="none"/>
+  <text stroke="#0000ff" transform="matrix(34.3483772277832,0,0,2.2240493297576904,-3684.720138225268,-61.782935498731604) " xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="13" id="svg_37" y="64.386379" x="110.444018" fill-opacity="null" stroke-width="0" fill="#000000"/>
+  <polyline stroke-linecap="round" id="svg_38" points="198.60652923583984,53.3496036529541 198.19669342041016,53.3496036529541 198.19669342041016,53.75943946838379 " fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#0000ff" fill="none"/>
+  <path d="m220.73769,44.743043c-1.229507,0.409836 -4.393921,1.593857 -9.016403,4.918034c-3.537003,2.543575 -5.327866,5.737705 -5.327866,9.426235c0,3.688522 0,6.147545 0,7.377052c0,0.819672 -0.979111,1.498329 -2.049179,2.868851c-1.470673,1.883598 -1.229507,4.098366 -1.229507,6.967216c0,2.459015 0.819672,4.508202 1.229507,5.737709l0.409836,1.639343l1.229507,1.229507l1.639343,1.639343" id="svg_39" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#0000ff" fill="none"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="39" id="svg_40" y="51.710265" x="69.508126" stroke-width="0" stroke="#0c3261" fill="#0c3261">Medical Service</text>
+ </g>
+</svg>

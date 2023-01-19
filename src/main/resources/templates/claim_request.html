@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Requests</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="header">
+    <div id="navigation-container">
+        <img class="logo" src="/pictures/logo.svg">
+        <ul class="hr">
+            <li><a href="/">Home</a></li>
+            <li sec:authorize="hasRole('ROLE_DOCTOR')"><a href="/claim_request">Claim Request</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/claim_request">Claim Request</a></li>
+            <li sec:authorize="hasRole('ROLE_USER')"><a href="/send_request">Send Request</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/send_request">Send Request</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin">AdminPanel</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="main">
+
+
+
+    <div class="addOp">
+        <h2>Add new request</h2>
+
+        <form role="form" action="/claim_request_add" autocomplete="off" method="POST" modelAttribute="operationForm">
+            <label>Number Operation</label>
+            <br>
+            <input type="text" name="operation" >
+            <br>
+            <label>Date</label>
+            <br>
+            <input type="text" name="data">
+            <br>
+            <label>Time</label>
+            <br>
+            <input type="text" name="time">
+            <br>
+            <label>Emloyment</label>
+            <br>
+            <input type="text" name="employment">
+            <br>
+            <button type="submit" class="addOperation">Add new</button>
+        </form>
+    </div>
+
+    <h2>All Requests</h2>
+
+    <table class="centerTable">
+
+        <thead>
+        <th>Request №</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Operation</th>
+        </thead>
+
+        <div th:each ="rq : ${allRequest}">
+            <tr>
+                <td th:text="${rq.id}"></td>
+                <td th:text="${rq.data}"></td>
+                <td th:text="${rq.time}"></td>
+                <td th:text="${rq.firstName}"></td>
+                <td th:text="${rq.lastName}"></td>
+                <td th:text="${rq.operation}"></td>
+                <td>
+                    <form action="/claim_request" method="post">
+                        <input type="hidden" name="requestId" th:value="${rq.id}"/>
+                        <input type="hidden" name="action" th:value="accept"/>
+                        <button type="submit" class="acceptReq">Принять</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/claim_request" method="post">
+                        <input type="hidden" name="requestId" th:value="${rq.id}"/>
+                        <input type="hidden" name="action" th:value="reject"/>
+                        <button type="submit" class="acceptRej">Отклонить</button>
+                    </form>
+                </td>
+            </tr>
+        </div>
+    </table>
+
+</div>
+
+<footer>
+    <p>Компания © Medical Service. Все права защищены.</p>
+</footer>
+
+</body>
+</html>

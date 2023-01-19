@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<div class="header">
+    <div id="navigation-container">
+        <a href="/"><img class="logo" src="/pictures/logo.svg" /></a>
+        <ul class="hr">
+            <li><a href="/">Home</a></li>
+            <li sec:authorize="hasRole('ROLE_DOCTOR')"><a href="/claim_request">Claim Request</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/claim_request">Claim Request</a></li>
+            <li sec:authorize="hasRole('ROLE_USER')"><a href="/send_request">Send Request</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/send_request">Send Request</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin">AdminPanel</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</div>
+<div class="main">
+
+    <h2>Add new User</h2>
+
+    <div class="adminregister">
+        <form role="form" action="/admin_registration" autocomplete="off" method="POST" modelAttribute="userForm">
+            <label>First name</label>
+            <br>
+            <input type="text" name="first_name">
+            <br>
+            <label>Last Name</label>
+            <br>
+            <input type="text" name="last_name">
+            <br>
+            <label>Email</label>
+            <br>
+            <input type="text" name="email">
+            <br>
+            <label>Username</label>
+            <br>
+            <input type="text" name="username">
+            <br>
+            <label>Password</label>
+            <br>
+            <input type="password" name="password">
+            <br>
+            <label>Confirm Password</label>
+            <br>
+            <input type="password" name="passwordConfirm">
+            <button type="submit" class="btn btn-success del">Add</button>
+        </form>
+        <script src="/js/admin.js"></script>
+    </div>
+
+<table class="alert alert-info mt-2 users">
+    <thead>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Roles</th>
+    <th>Delete User</th>
+    <th colspan="2">Operator actions</th>
+    </thead>
+
+    <div th:each ="el : ${allUsers}">
+        <tr>
+            <td th:text="${el.id}"></td>
+            <td th:text="${el.first_name}"></td>
+            <td th:text="${el.last_name}"></td>
+            <td th:text="${el.email}"></td>
+            <td th:text="${el.username}"></td>
+            <td th:text="${el.password}"></td>
+            <td>
+                <div th:each="role : ${el.roles}"><span th:text="${role.name}"></span></div>
+            </td>
+            <td>
+                <form action="/admin" method="post">
+                    <input type="hidden" name="userId" th:value="${el.id}"/>
+                    <input type="hidden" name="action" th:value="delete"/>
+                    <button type="submit" class="btn btn-danger del">Delete</button>
+                </form>
+            </td>
+            <td>
+                <form action="/admin" method="post">
+                    <input type="hidden" name="userId" th:value="${el.id}"/>
+                    <input type="hidden" name="action" th:value="give_doctor"/>
+                    <button type="submit" class="btn btn-danger del">Give Doctor</button>
+                </form>
+            </td>
+            <td>
+                <form action="/admin" method="post">
+                    <input type="hidden" name="userId" th:value="${el.id}"/>
+                    <input type="hidden" name="action" th:value="delete_doctor"/>
+                    <button type="submit" class="btn btn-danger del">Del Doctor</button>
+                </form>
+            </td>
+        </tr>
+    </div>
+</table>
+</div>
+
+<footer>
+    <p>Компания © Medical Service. Все права защищены.</p>
+</footer>
+
+</body>
+</html>

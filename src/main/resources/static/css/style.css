@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+
+body {
+    margin: 0;
+    background: url("/pictures/fon-21.jpg");
+    font-family: 'Vibur', cursive;
+    font-family: 'Abel', sans-serif;
+}
+
+.header {
+    width: auto;
+    height:auto;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #0c3261;
+}
+
+.main {
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.header ul {
+    padding-top: 20px;
+    margin: 0px;
+    padding-right: 10%;
+    display: inline-block;
+    float: right;
+}
+ul.hr li {
+    display: inline;
+    padding-right: 10px;
+    font-size: 20px;
+}
+
+table.data{
+    font-size: 30px;
+    border: 1px solid #0c3261;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    color: #0c3261;
+    background-color: white;
+}
+
+img{
+    width: 300px;
+    height: 60px;
+    display: inline;
+    padding-left: 5%;
+}
+
+th,td{
+    padding: 10px;
+}
+
+h2{
+    color: #0c3261;
+    text-align: center;
+}
+
+h1{
+    padding-top: 10%;
+    color: #0c3261;
+    text-align: center;
+    font-size: 40px;
+}
+
+button.accept{
+    width: 35px;
+    height: 20px;
+}
+
+footer{
+    background-color: #5294ff;
+    padding: 10px 20px;
+    text-align: center;
+    color: white;
+}
+
+button.addOperation{
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+
+}
+
+.addOp{
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+table.centerTable{
+    text-align:center;
+    margin: 0 auto;
+}
+
+button.acceptReq{
+    width: 100px;
+    height: 30px;
+    background-color: #77dd77;
+    border-radius: 5px;
+}
+
+button.acceptRej{
+    width: 100px;
+    height: 30px;
+    background-color: #db5856;
+    border-radius: 5px;
+}
+
+input {
+    border-radius: 5px;
+    height: 30px;
+    width: 200px;
+    font-family: 'Abel', sans-serif;
+    outline:none;
+}
+
+.operationsTable{
+    width: auto;
+    padding-left: 100px;
+}
+
+.submitApp{
+    width: 300px;
+    height: 50px;
+    margin-left: 40%;
+    font-size: 30px;
+    text-align: center;
+    background-color: #0c3261;
+    color: white
+}
